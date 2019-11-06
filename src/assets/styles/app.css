@@ -1,0 +1,13 @@
+@import "./theme/light.css";
+@import "./theme/dark.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+body {
+    background: var(--background);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--textColor);
+    font-family: 'Open Sans', sans-serif;
+}
