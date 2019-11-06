@@ -7,11 +7,13 @@
  */
 
 import React from 'react';
+import {Button} from "components/Button";
 
 export default function App() {
     return (
         <div className="App">
             <header className="App-header">
+                <Button/>
                 <p>
                     Edit <code>src/App.js</code> and save to reload.
                 </p>
