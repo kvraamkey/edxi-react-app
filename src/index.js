@@ -1,10 +1,26 @@
+/**
+ * app.js
+ *
+ * This is the entry file for the application, only setup and boilerplate
+ * code.
+ */
+
+
+// Import all the third party stuff
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {render} from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Import root app
+import App from './App';
+
+const moundNode = document.getElementById("edxi");
+
+function renderApp() {
+    render(<App/>, moundNode)
+}
+
+renderApp();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
