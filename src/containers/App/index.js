@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {Button} from "components/Button";
+import {Button} from "components/index";
 
 export default function App() {
     return (

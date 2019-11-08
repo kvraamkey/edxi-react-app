@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "checkJs" : true,
     "paths": {
       "components/*": ["components/*"],
       "assets/*": ["assets/*"],
       "containers/*": ["containers/*"],
       "services/*": ["services/*"],
       "utils/*": ["utils/*"]
-    }
+    },
+    "checkJs" : false,
+    "sourceMap": false
   },
   "exclude": ["node_modules", "build"]
 }

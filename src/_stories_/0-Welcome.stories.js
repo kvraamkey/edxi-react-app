@@ -1,13 +1,9 @@
 import React from 'react';
-import { linkTo } from '@storybook/addon-links';
-import { Welcome } from '@storybook/react/demo';
+import Edxi from "components/@edxi/UI";
 
 export default {
   title: 'Welcome',
 };
 
-export const toStorybook = () => <Welcome showApp={linkTo('Button')} />;
+export const ReadMe = () => <Edxi.Welcome />;
 
-toStorybook.story = {
-  name: 'to Storybook',
-};

@@ -1,7 +1,3 @@
 import React from "react";
 
-export const Button = () => {
-    return (
-        <p>Button</p>
-    )
-}
+export const Button = () => <p>Button</p>;
