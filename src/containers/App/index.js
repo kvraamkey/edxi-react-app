@@ -7,21 +7,20 @@
  */
 
 import React from 'react';
-import {Button} from "components/index";
+import {useDispatch, useSelector} from "react-redux";
+import {counterIncrement} from "./action";
 
 export default function App() {
+    const countReducer = useSelector(store => store.countReducer);
+
+    const dispatch = useDispatch();
+
+    console.log(`COUNTER: ${countReducer}`);
     return (
         <div className="App">
             <header className="App-header">
-                <Button/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className="App-link"
-                   href="https://reactjs.org"
-                   target="_blank"
-                   rel="noopener noreferrer">Learn React
-                </a>
+                <p>counter:{countReducer}</p>
+                <button onClick={()=>dispatch(counterIncrement(1))}>Increment</button>
             </header>
         </div>
     )

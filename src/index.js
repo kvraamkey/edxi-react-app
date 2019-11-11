@@ -8,15 +8,20 @@
 // Import all the third party stuff
 import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux'
 
 // Import root app
-import App from './containers/App';
+// import App from './containers/App';
+import configureStore from "./store";
+import AppRouter from "./router";
 
-const moundNode = document.getElementById("edxi");
+const initialState = {};
+const store = configureStore(initialState);
 
-function renderApp() {
-    render(<App/>, moundNode)
-}
-
-renderApp();
+render(
+    <Provider store={store}>
+        <AppRouter/>
+    </Provider>,
+    document.getElementById("edxi")
+)
 
