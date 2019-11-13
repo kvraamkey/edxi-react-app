@@ -1,10 +1,13 @@
-const tailwindcss = require('tailwindcss');
+var tailwindcss = require('tailwindcss');
 
 const purgecss = require('@fullhuman/postcss-purgecss')({
 
     // Specify the paths to all of the template files in your project
     content: [
+        './src/index.html',
         './src/**/*.css',
+        './src/**/*.jsx',
+        './src/**/*.js',
     ],
 
     // Include any special characters you're using in this regular expression

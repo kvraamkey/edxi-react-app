@@ -18,8 +18,8 @@ export default function App() {
         <div className="App">
             <header className="App-header">
                 <p>counter: {store.name} {store.count}</p>
-                <button onClick={() => dispatch(counterIncrement(1))}>Increment</button>
-                <button onClick={() => dispatch({type: 'DECREMENT'}, 1)}>DECREMENT</button>
+                <button className="btn" onClick={() => dispatch(counterIncrement(1))}>Increment</button>
+                <button className="btn btn-blue" onClick={() => dispatch({type: 'DECREMENT'}, 1)}>DECREMENT</button>
             </header>
         </div>
     )
