@@ -1,14 +1,13 @@
-import {COUNT_DECREMENT, COUNT_INCREMENT} from "./type";
+import createReducer from "store/createReducer";
 
-const INTITIAL_STATE = 0;
+const INTITIAL_STATE = {
+    name: "sample reducer",
+    count: 0
+};
 
-export const countReducer = (state = INTITIAL_STATE, action) => {
-    switch (action.type) {
-        case COUNT_INCREMENT:
-            return state + action.payload;
-        case COUNT_DECREMENT:
-            return state + action.payload
-        default :
-            return state;
-    }
-}
+export const countReducer = createReducer({
+    INCREMENT: (draft, payload) => {
+        return draft.count += payload
+    },
+    DECREMENT: draft => draft.count -= 1
+}, {...INTITIAL_STATE});

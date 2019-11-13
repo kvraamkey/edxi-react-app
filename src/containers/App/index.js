@@ -8,19 +8,18 @@
 
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {counterIncrement} from "./action";
+import {counterIncrement} from "containers/App/action";
 
 export default function App() {
-    const countReducer = useSelector(store => store.countReducer);
-
+    const store = useSelector(store => store.countReducer);
     const dispatch = useDispatch();
 
-    console.log(`COUNTER: ${countReducer}`);
     return (
         <div className="App">
             <header className="App-header">
-                <p>counter:{countReducer}</p>
-                <button onClick={()=>dispatch(counterIncrement(1))}>Increment</button>
+                <p>counter: {store.name} {store.count}</p>
+                <button onClick={() => dispatch(counterIncrement(1))}>Increment</button>
+                <button onClick={() => dispatch({type: 'DECREMENT'}, 1)}>DECREMENT</button>
             </header>
         </div>
     )

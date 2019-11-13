@@ -3,14 +3,14 @@
  */
 
 import {createStore} from 'redux';
-import createReducer from "./reducers";
+import reducers from "./reducers";
 
 export default function configureStore(initialState = {}) {
 
-
     const store = createStore(
-        createReducer(),
+        reducers(),
         initialState,
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
         // composeEnhancers(...enhancers),
     );
 
@@ -19,7 +19,7 @@ export default function configureStore(initialState = {}) {
 
     if (module.hot) {
         module.hot.accept('./reducers', () => {
-            store.replaceReducer(createReducer(store.injectedReducers));
+            store.replaceReducer(reducers(store.injectedReducers));
         });
     }
 

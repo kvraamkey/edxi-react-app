@@ -3,8 +3,6 @@
  */
 
 import {combineReducers} from "redux";
-import {countReducer} from "containers/App/reducer";
-import {HomeReducer} from "containers/Home/reducer";
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -18,12 +16,8 @@ reducers.keys().forEach(key => {
     });
 })
 
-
 export default function createReducer() {
-    const rootReducer = combineReducers({
-        countReducer: countReducer,
-        homeReducer: HomeReducer
-    });
+    const rootReducer = combineReducers({...injectedReducers});
 
     return rootReducer;
 }

@@ -6,6 +6,7 @@
       "assets/*": ["assets/*"],
       "containers/*": ["containers/*"],
       "services/*": ["services/*"],
+      "store/*": ["store/*"],
       "utils/*": ["utils/*"]
     },
     "checkJs" : false,
