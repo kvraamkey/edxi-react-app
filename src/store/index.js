@@ -2,27 +2,30 @@
  * Create the store with dynamic reducers
  */
 
-import {createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
+import createSagaMiddleware from 'redux-saga'
+
 import reducers from "./reducers";
+import rootSaga from './sagas'
 
-export default function configureStore(initialState = {}) {
+const sagaMiddleware = createSagaMiddleware();
 
-    const store = createStore(
+export default function configureStore(initialState) {
+
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+    // const middlewares = [sagaMiddleware];
+
+    const enhancers = [applyMiddleware(sagaMiddleware)];
+
+    let store = createStore(
         reducers(),
         initialState,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-        // composeEnhancers(...enhancers),
+        composeEnhancers(...enhancers),
     );
 
-    store.injectedReducers = {}; // Reducer registry
+    sagaMiddleware.run(rootSaga);
 
-
-    if (module.hot) {
-        module.hot.accept('./reducers', () => {
-            store.replaceReducer(reducers(store.injectedReducers));
-        });
-    }
-
-    return store
+    return store;
 
 }
