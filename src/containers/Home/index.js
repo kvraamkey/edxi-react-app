@@ -5,7 +5,7 @@ import {getNews, getUsers} from "containers/Home/action";
 export default function HomePage() {
     const store = useSelector(store => store.HomeReducer);
     const dispatch = useDispatch();
-    // const renders = React.useRef(0);
+    const renders = React.useRef(0);
 
     useEffect(() => {
         dispatch(getNews());
@@ -13,6 +13,7 @@ export default function HomePage() {
 
     return (
         <div className="edxi_appContent_page">
+            <div>renders: {renders.current++}</div>
             <button onClick={() => dispatch(getUsers())}>Press to see news</button>
             {store.loading && <h1>LOADING</h1>}
             {!store.loading && <pre>{JSON.stringify(store, null, 2)}</pre>}

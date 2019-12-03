@@ -10,7 +10,7 @@ import {all, fork} from 'redux-saga/effects'
  * Combine all reducers in this file and export the combined reducers.
  */
 const injectedReducers = {};
-const reducers = require.context('./../containers', true, /reducer\.js$/);
+const reducers = require.context('./containers', true, /reducer\.js$/);
 
 reducers.keys().forEach(key => {
     Object.keys(reducers(key)).forEach(function (k) {
@@ -24,7 +24,7 @@ reducers.keys().forEach(key => {
  */
 
 const injectedSagas = [];
-const sagas = require.context('./../containers', true, /sagas\.js$/);
+const sagas = require.context('./containers', true, /sagas\.js$/);
 
 sagas.keys().forEach(key => {
     injectedSagas.push(...Object.values(sagas(key)))

@@ -1,19 +1,12 @@
 import createReducer from "store/createReducer";
 
-// export const HomeReducer = (state = {}, action) => {
-//     switch (action.type) {
-//         case 'GET_NEWS':
-//             return {...state, loading: true};
-//         case 'NEWS_RECEIVED':
-//             return {...state, news: action.json, loading: false}
-//         case 'GET_USERS':
-//             return {...state, loading: true};
-//         case 'USERS_RECEIVED':
-//             return {...state, users: action.json, loading: false}
-//         default:
-//             return state;
-//     }
-// };
+const homeInitStore = {
+    loading: true,
+    error:false,
+    errorMessage:"something went wrong",
+    news: [],
+    users: []
+}
 
 export const HomeReducer = createReducer({
     GET_NEWS: (draft) => {
@@ -23,6 +16,11 @@ export const HomeReducer = createReducer({
         draft.loading = false
         draft.news = payload
     },
+    NEWS_ERROR: (draft, payload) => {
+        draft.loading = false
+        draft.error = true
+        draft.errorMessage = payload
+    },
     GET_USERS: (draft) => {
         draft.loading = true;
     },
@@ -31,4 +29,4 @@ export const HomeReducer = createReducer({
         draft.users = payload
     }
 
-}, {loading: true, news: [], users: []})
+}, homeInitStore)

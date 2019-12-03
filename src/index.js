@@ -1,5 +1,5 @@
 /**
- * app.js
+ * index.js
  *
  * This is the entry file for the application, only setup and boilerplate
  * code.
@@ -11,10 +11,10 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux'
 
 // Import root app
-// import App from './containers/App';
-import configureStore from "./store";
 import AppRouter from "./router";
+import configureStore from './configureStore';
 
+// Create redux store with history
 const initialState = {};
 const store = configureStore(initialState);
 
