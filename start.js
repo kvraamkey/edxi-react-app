@@ -12,39 +12,35 @@
 //   /!\ DO NOT MODIFY THIS FILE /!\
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const process = require('process');
+const chalk = require('chalk');
 const fs = require('fs-extra');
 const path = require('path');
-const { exec } = require('child_process');
+const exec = require('child_process').exec;
+const ora = require('ora');
+const check = require("check-node-version");
 
-const color = {
-    FgWhite: "\x1b[37m",
-    FgRed: "\x1b[31m",
-    FgGreen: "\x1b[32m",
-    FgYellow: "\x1b[33m",
-    FgCyan: "\x1b[36m"
-}
+// const process = require('process');
+// const fs = require('fs-extra');
+// const path = require('path');
+// const { exec } = require('child_process');
 
-const packageJson = require('../package.json');
 
-const folderName = process.argv[2] || packageJson.name;
+// const spinners = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
-const spinners = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+// let index = 0;
 
-let index = 0;
+// function intervalFunc() {
+//     index++;
 
-function intervalFunc() {
-    index++;
+//     let line = spinners[index];
 
-    let line = spinners[index];
+//     if (line === undefined) {
+//         index = 0;
+//         line = spinners[index]
+//     }
 
-    if (line === undefined) {
-        index = 0;
-        line = spinners[index]
-    }
-
-    process.stdout.write("\r" + line);
-}
+//     process.stdout.write("\r" + line);
+// }
 
 // process.stdout.write("\x1B[?25l");
 
@@ -56,72 +52,52 @@ function intervalFunc() {
  * every dep the exact version speficied in package.json
  */
 
-const getDeps = deps =>
-    Object.entries(deps)
-        .map(dep => `${dep[0]}@${dep[1]}`)
-        .toString()
-        .replace(/,/g, ' ')
-        .replace(/^/g, '')
-        // exclude the plugin only used in this file, nor relevant to the boilerplate
-        .replace(/fs-extra[^\s]+/g, '');
-
-// console.log(color.FgYellow, '\nInitializing project..');
-
-console.log();
-console.log(`Creating a new React app in ${folderName}.`);
+const folderName = process.argv[2] || "edxi-react-setup";
+let yarn = {}
 console.log();
 
-exec(`mkdir ${folderName} && cd ${folderName} && npm init -f`, (initErr, initStdout, initStderr) => {
+check({}, (error, result) => {
 
-    if (initErr) {
-        console.log(`Everything was fine, then it wasn't: ${initStderr}`);
-        console.log();
-        return;
-    }
+    let yarnR = result.versions.yarn;
+    yarn.isSatisfied = yarnR.isSatisfied;
+    yarn.version = yarnR.version.version;
 
-    const packageJSONFile = `${folderName}/package.json`;
-
-    delete packageJson['bin'];
-
-    let data = JSON.stringify(packageJson, null, 2);
-
-    fs.writeFile(packageJSONFile, data, err2 => err2 || true);
-
-    const filesToCopy = ['.gitignore', 'jsconfig.json', 'LICENSE', 'postcss.config.js', 'README.md', 'tailwind.config.js'];
-
-    for (let i = 0; i < filesToCopy.length; i += 1) {
-        fs
-            .createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
-            .pipe(fs.createWriteStream(`${folderName}/${filesToCopy[i]}`));
-    }
-
-    // installing dependencies
-    console.log('Installing deps -- it might take a few minutes..');
-    console.log();
-
-    const devDeps = getDeps(packageJson.devDependencies);
-    const deps = getDeps(packageJson.dependencies);
-
-    const loadSpinner = setInterval(intervalFunc, 100);
-
-    exec(`cd ${folderName} && npm i -D ${devDeps} && npm i -S ${deps}`, (npmErr, npmStdout, npmStderr) => {
-
-        if (npmErr) {
-            console.error(`it's always npm, ain't it? ${npmStderr}`);
+    exec(`mkdir ${folderName} && cd ${folderName}`, (initErr, initStdout, initStderr) => {
+        if (initErr) {
+            console.log(`Everything was fine, then it wasn't: ${chalk.redBright(initStderr)}`);
             return;
         }
 
-        clearInterval(loadSpinner);
-        console.log('Dependencies installed');
+        console.log(`Creating a new React app in ${chalk.green(`~/${folderName}`)}.`);
         console.log();
 
-        // copy additional source files
-
         fs
-            .copy(path.join(__dirname, '../src'), `${folderName}/src`)
+            .copy(path.join(__dirname, 'template'), `${folderName}`)
             .then(() => {
-                console.log(`Your project is now started into ${folderName} folder, refer to the README for the project structure.`);
-                console.log();
+                console.log('Installing packages. This might take a couple of minutes.');
+
+                const spinner = ora(`Installing ${chalk.cyan('react')}, ${chalk.cyan('react-dom')} and ${chalk.cyan('react-scripts')}...`);
+                spinner.start();
+
+                exec(`cd ${folderName} && ${yarn.isSatisfied ? `yarn` : `npm i`}`, (npmErr, npmStdout, npmStderr) => {
+                    if (npmErr) {
+                        console.log();
+                        console.error(`it's always npm, ain't it? ${npmStderr}`);
+                        return;
+                    }
+
+                    spinner.succeed();
+
+                    console.log();
+                    console.log(`yarn add v${yarn.version}`);
+                    console.log(`${chalk.cyan('info')} No lockfile found.`);
+                    console.log(npmStdout);
+
+                    console.log(`Success! Created ${folderName} at ~/${folderName}`);
+                    console.log();
+
+                });
+
             })
             .catch(err => {
                 console.error(err);

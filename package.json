@@ -1,0 +1,32 @@
+{
+    "name": "react-redux-saga-router-setup",
+    "version": "1.0.0",
+    "description": "react, react-router, hot-reload, sass, tailwind",
+    "main": "index.js",
+    "author": "Ramki A",
+    "license": "MIT",
+    "scripts": {
+        "start": "node start.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/kvraamkey/react-redux-saga-router-setup.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kvraamkey/react-redux-saga-router-setup/issues"
+    },
+    "homepage": "https://github.com/kvraamkey/react-redux-saga-router-setup#readme",
+    "dependencies": {
+        "check-node-version": "^4.0.2",
+        "fs-extra": "^8.1.0",
+        "ora": "^4.0.3"
+    },
+    "devDependencies": {
+        "chalk": "^3.0.0"
+    },
+    "preferGlobal": true,
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "keywords": []
+}

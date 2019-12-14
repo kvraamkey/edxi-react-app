@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/edxi-react-setup
 /.pnp
 /.idea
 .pnp.js
