@@ -1,8 +1,7 @@
 {
     "name": "edxi-react-app",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "A highly scalable with the best developer experience and a focus on performance and best practices.",
-    "main": "index.js",
     "author": "Ramki A",
     "license": "MIT",
     "scripts": {
@@ -13,12 +12,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/kvraamkey/react-redux-saga-router-setup.git"
+        "url": "git://github.com/kvraamkey/edxi-react-app.git"
     },
     "bugs": {
-        "url": "https://github.com/kvraamkey/react-redux-saga-router-setup/issues"
+        "url": "https://github.com/kvraamkey/edxi-react-app/issues"
     },
-    "homepage": "https://github.com/kvraamkey/react-redux-saga-router-setup#readme",
+    "homepage": "https://github.com/kvraamkey/edxi-react-app#readme",
     "dependencies": {
         "check-node-version": "^4.0.2",
         "fs-extra": "^8.1.0",
@@ -26,9 +25,6 @@
     },
     "devDependencies": {
         "chalk": "^3.0.0"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
     },
     "preferGlobal": true,
     "keywords": []
