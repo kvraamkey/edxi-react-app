@@ -9,7 +9,7 @@
         "start": "node start.js"
     },
     "bin": {
-        "edxi-react-app": "./bin/start.js"
+        "edxi-react-app": "start.js"
     },
     "repository": {
         "type": "git",
