@@ -1,5 +1,5 @@
 {
-    "name": "@kvraamkey/react-setup",
+    "name": "edxi-react-app",
     "version": "1.0.0",
     "description": "react, react-router, hot-reload, sass, tailwind",
     "main": "index.js",
