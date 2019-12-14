@@ -1,5 +1,5 @@
 {
-    "name": "react-redux-saga-router-setup",
+    "name": "@kvraamkey/react-setup",
     "version": "1.0.0",
     "description": "react, react-router, hot-reload, sass, tailwind",
     "main": "index.js",
@@ -7,6 +7,9 @@
     "license": "MIT",
     "scripts": {
         "start": "node start.js"
+    },
+    "bin": {
+        "edxi-react-app": "./bin/start.js"
     },
     "repository": {
         "type": "git",
