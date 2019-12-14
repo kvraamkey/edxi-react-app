@@ -94,6 +94,13 @@ check({}, (error, result) => {
                     console.log(npmStdout);
 
                     console.log(`Success! Created ${folderName} at ~/${folderName}`);
+                    console.log("Inside that directory, you can run several comments:")
+                    console.log();
+
+                    console.log("We Suggest that you begin by typing:")
+                    console.log();
+                    console.log(`${chalk.cyan('cd')} ${folderName}`)
+                    console.log(chalk.cyan(`${yarn.isSatisfied ? 'yarn' : 'npm'} start`))
                     console.log();
 
                 });
