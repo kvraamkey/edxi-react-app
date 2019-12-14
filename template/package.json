@@ -1,7 +1,9 @@
 {
-  "name": "setup",
-  "version": "0.1.0",
-  "private": true,
+  "name": "edxi-react-app",
+  "version": "1.0.0",
+  "bin": {
+    "edxi-react-app": "./bin/start.js"
+  },
   "scripts": {
     "start": "run-p watch:css start:react",
     "build": "run-p build:clean build:css build:react",
