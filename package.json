@@ -1,7 +1,7 @@
 {
     "name": "edxi-react-app",
     "version": "1.0.0",
-    "description": "react, react-router, hot-reload, sass, tailwind",
+    "description": "A highly scalable with the best developer experience and a focus on performance and best practices.",
     "main": "index.js",
     "author": "Ramki A",
     "license": "MIT",
@@ -27,9 +27,9 @@
     "devDependencies": {
         "chalk": "^3.0.0"
     },
-    "preferGlobal": true,
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
     },
+    "preferGlobal": true,
     "keywords": []
 }
