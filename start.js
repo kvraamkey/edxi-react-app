@@ -19,31 +19,6 @@ const exec = require('child_process').exec;
 const ora = require('ora');
 const check = require("check-node-version");
 
-// const process = require('process');
-// const fs = require('fs-extra');
-// const path = require('path');
-// const { exec } = require('child_process');
-
-
-// const spinners = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
-
-// let index = 0;
-
-// function intervalFunc() {
-//     index++;
-
-//     let line = spinners[index];
-
-//     if (line === undefined) {
-//         index = 0;
-//         line = spinners[index]
-//     }
-
-//     process.stdout.write("\r" + line);
-// }
-
-// process.stdout.write("\x1B[?25l");
-
 /**
  * we pass the object key dependency || devdependency to this function
  * @param {object} deps object key that we want to extract
