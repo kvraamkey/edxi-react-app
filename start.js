@@ -35,7 +35,7 @@ check({}, (error, result) => {
 
     let yarnR = result.versions.yarn;
     yarn.isSatisfied = yarnR.isSatisfied;
-    yarn.version = yarnR.version.version;
+    yarn.version = yarnR.version;
 
     exec(`mkdir ${folderName} && cd ${folderName}`, (initErr, initStdout, initStderr) => {
         if (initErr) {
