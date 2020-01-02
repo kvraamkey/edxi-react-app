@@ -4,9 +4,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 But you still get it.
 
-## What is this
-
 Simple base app with react, react-router, hot-reload &amp; tailwind, postcss.
+
+`npm i -g edxi-react-app` to install the package.
+
+`edxi-react-app folderName` to start the boilerplate into `folderName` folder.
+
+#### [ Or ] 
+
+if you're using `npm@5.2.0` or above, you can simply run `npx edxi-react-appfolderName` , without the need to install the package globally.
+
+## What is this
 
 This is a base project that you can use to jumpstart your react apps, it works similarly to create-react-app, just install the package globally and use it to create as many projects as you want (check How to install for detailed instructions).
 
