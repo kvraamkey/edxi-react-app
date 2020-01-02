@@ -12,7 +12,7 @@ Simple base app with react, react-router, hot-reload &amp; tailwind, postcss.
 
 #### [ Or ] 
 
-if you're using `npm@5.2.0` or above, you can simply run `npx edxi-react-appfolderName` , without the need to install the package globally.
+if you're using `npm@5.2.0` or above, you can simply run `npx edxi-react-app folderName` , without the need to install the package globally.
 
 ## What is this
 
