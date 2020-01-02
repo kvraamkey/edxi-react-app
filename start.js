@@ -34,8 +34,11 @@ console.log();
 check({}, (error, result) => {
 
     let yarnR = result.versions.yarn;
-    yarn.isSatisfied = yarnR.isSatisfied;
-    yarn.version = yarnR.version;
+    yarn.isSatisfied = yarnR.version ? true : false;
+
+    if (yarn.isSatisfied) {
+        yarn.version = yarnR.version;
+    }
 
     exec(`mkdir ${folderName} && cd ${folderName}`, (initErr, initStdout, initStderr) => {
         if (initErr) {
@@ -64,8 +67,10 @@ check({}, (error, result) => {
                     spinner.succeed();
 
                     console.log();
-                    console.log(`yarn add v${yarn.version}`);
-                    console.log(`${chalk.cyan('info')} No lockfile found.`);
+                    if (yarn.isSatisfied) {
+                        console.log(`yarn add v${yarn.version}`);
+                        console.log(`${chalk.cyan('info')} No lockfile found.`);
+                    }
                     console.log(npmStdout);
 
                     console.log(`Success! Created ${folderName} at ~/${folderName}`);
