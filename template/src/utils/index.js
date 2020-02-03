@@ -5,14 +5,10 @@ function camelize(str) {
   });
 }
 
-const images = require.context(
-  "./../assets/images",
-  true,
-  /\.(png|jpe?g|svg)$/
-);
+const images = require.context("./../assets/images", true, /\.(png|jpe?g|svg)$/);
 
 const obj = {};
-images.keys().forEach(key => {
+images.keys().forEach((key) => {
   const keyName = key
     .split("./")
     .pop() // remove the first 2 characters
