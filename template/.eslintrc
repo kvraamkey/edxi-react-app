@@ -4,17 +4,42 @@
         "jest": true,
         "es6": true
     },
-    "plugins": [
-        "import"
+    "ignorePatterns": [
+        "postcss.config.js",
+        "tailwind.config.css",
+        "node_modules"
     ],
-    "extends": "eslint:recommended",
+    "extends": [
+        "plugin:react/recommended",
+        "standard"
+        // "eslint:all",
+        // "plugin:react/all"
+    ],
+    "settings": {
+        "react": {
+            "version": "16.11"
+        }
+    },
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
     "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
+    "plugins": [
+        "react"
+    ],
     "rules": {
         "no-console": "warn",
+        "no-unused-vars": "warn",
+        "no-extra-semi": "warn",
         "no-eval": "error",
-        "import/first": "error"
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
     }
 }

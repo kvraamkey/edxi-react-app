@@ -1,12 +1,19 @@
-import React from "react";
+import React from 'react'
 
-export default function HomePage() {
+export default function HomePage () {
   return (
     <div className="App">
-      <h1>Welcome to EverestDx</h1>
-      <a class="App-link" href="/" target="_blank" rel="noopener noreferrer">
-        Introduction
+      <h1>
+                Welcome to EverestDx
+      </h1>
+      <a
+        className="App-link"
+        href="/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+                Introduction
       </a>
     </div>
-  );
+  )
 }
