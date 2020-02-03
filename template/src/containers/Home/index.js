@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export default function HomePage() {
+export default function HomePage () {
   return (
     <div className="App">
       <h1>Welcome to EverestDx</h1>
@@ -8,5 +8,5 @@ export default function HomePage() {
         Introduction
       </a>
     </div>
-  );
+  )
 }
