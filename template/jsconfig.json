@@ -9,7 +9,7 @@
       "store/*": ["store/*"],
       "utils/*": ["utils/*"]
     },
-    "checkJs" : false,
+    "checkJs": false,
     "sourceMap": false
   },
   "exclude": ["node_modules", "build"]
