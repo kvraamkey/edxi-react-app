@@ -14,6 +14,8 @@ import { Provider } from 'react-redux'
 import App from './containers/App'
 import configureStore from './configureStore'
 
+import './assets/styles/app.less';
+
 // Create redux store with history
 const initialState = {}
 const store = configureStore(initialState)
